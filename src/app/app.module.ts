@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,18 +22,21 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 //Importando Dialog
 import {MatDialogModule} from '@angular/material/dialog';
 //Importando o meetings form
-import { MeetingsFormComponent } from './components/meetings-form/meetings-form.component';
+import { MeetingFormComponent } from './components/meetings-form/meetings-form.component';
 //Importando o input
 import {MatInputModule} from '@angular/material/input';
 //Importando o DatePicker
 import {MatDatepickerModule} from '@angular/material/datepicker';
+//Importando Formulários
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MeetingsListComponent,
-    MeetingsFormComponent
+    MeetingFormComponent
   ],
   //Setando os Imports
   imports: [
@@ -47,9 +50,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatPaginatorModule,
     MatDialogModule,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [AppComponent,HomeComponent, MeetingsListComponent, MeetingFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

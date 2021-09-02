@@ -1,4 +1,5 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -6,22 +7,30 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './meetings-form.component.html',
   styleUrls: ['./meetings-form.component.css']
 })
-export class MeetingsFormComponent implements OnInit {
-
-
+export class MeetingFormComponent implements OnInit {
+  
+  public meetingForm: FormGroup
 
   constructor(
 
-    public dialogRef: MatDialogRef<MeetingsFormComponent>,
+    private fb: FormBuilder,
+    public dialogRef: MatDialogRef<MeetingFormComponent>,
     //@Optional @Inject(MAT_DIALOG_DATA) public data: string
   ) { }
 
   ngOnInit(): void {
+    console.log("Aqui")
+    this.meetingForm = this.fb.group({
+      id: [null],
+      meetingName: ['', Validators.required],
+      meetingSubject: ['', Validators.required],
+      meetingResponsible: ['', Validators.required],
+      meetingDate: ['', Validators.required],
+      meetingTime: ['', Validators.required],
+    })
   }
 
   cancel(): void{
     this.dialogRef.close();
   }
-
-
 }

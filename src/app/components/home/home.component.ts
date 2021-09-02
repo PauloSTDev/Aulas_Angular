@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MeetingsFormComponent } from '../meetings-form/meetings-form.component';
+import { MeetingFormComponent } from '../meetings-form/meetings-form.component';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
   }
 
   addMeeting() {
-    const dialogRef = this.dialog.open(MeetingsFormComponent, {
+
+    const dialogRef = this.dialog.open(MeetingFormComponent, {
       width: '500px'
     });
 
