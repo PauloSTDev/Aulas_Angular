@@ -29,7 +29,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 //Importando Formulários
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//Importando Seleções de data
 import { MatNativeDateModule } from '@angular/material/core';
+//Importando Client Http
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    HttpClientModule
   ],
   providers: [AppComponent,HomeComponent, MeetingsListComponent, MeetingFormComponent],
   bootstrap: [AppComponent]
