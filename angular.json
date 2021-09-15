@@ -4,6 +4,7 @@
     "analytics": "26c9dca1-2f59-40ed-b547-1dd9488695c2"
   },
   "version": 1,
+  
   "newProjectRoot": "projects",
   "projects": {
     "angular-mobilebaas": {

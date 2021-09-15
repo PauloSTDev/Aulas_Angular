@@ -1,10 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Component, Injectable, NgModule } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@NgModule({})
 export class MeetingService {
+  
   MOBILE_BAAS_URL: string = "https://mobilebaas.com/backend/api/manage/db";
   tableName: string = 'meeting';
 
@@ -28,13 +27,32 @@ export class MeetingService {
     }
 
     delete(id: string){
-      return this.http.put(this.MOBILE_BAAS_URL+'/'+id+'?table='+this.tableName, this.httpOptions)
+      return this.http.delete(this.MOBILE_BAAS_URL+'/'+id+'?table='+this.tableName, this.httpOptions)
     }
 
     getById(id: string){
-      return this.http.put(this.MOBILE_BAAS_URL+'/'+id+'?table='+this.tableName, this.httpOptions)
+      return this.http.get(this.MOBILE_BAAS_URL+'/'+id+'?table='+this.tableName, this.httpOptions)
     }
-    getAll(){
+    getAll(pageNumber: number, totalRecordsPerPage: number, sortField:string, filters:string){
+      let parameters = '?table='+this.tableName;
+      
+      if (pageNumber != null) {
+        parameters += '&pageNumber'+pageNumber;
+      }
+
+      if (totalRecordsPerPage != null) {
+        parameters += '&totalRecordsPerPage'+totalRecordsPerPage;
+      }
+
+      if (sortField != null) {
+        parameters += '&sortField'+sortField;
+      }
+
+      if (filters != null) {
+        parameters += '&filters'+filters;
+      }
+      
+      return this.http.get(this.MOBILE_BAAS_URL+'/find'+parameters, this.httpOptions);
       
     }
 }

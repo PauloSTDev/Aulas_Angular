@@ -1,4 +1,4 @@
-import { Injectable, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,13 +33,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 //Importando Client Http
 import { HttpClientModule } from '@angular/common/http';
+//Importando Lib para o serviço
+import { MeetingService } from './service/meeting.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MeetingsListComponent,
-    MeetingFormComponent
+    MeetingFormComponent,
   ],
   //Setando os Imports
   imports: [
@@ -57,7 +59,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MeetingService
   ],
   providers: [AppComponent,HomeComponent, MeetingsListComponent, MeetingFormComponent],
   bootstrap: [AppComponent]

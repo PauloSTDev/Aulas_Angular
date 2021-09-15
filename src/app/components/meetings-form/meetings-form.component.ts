@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef} from '@angular/material/dialog';
+import { MeetingService } from 'src/app/service/meeting.service';
 
 @Component({
   selector: 'app-meetings-form',
@@ -12,7 +13,8 @@ export class MeetingFormComponent implements OnInit {
   public meetingForm: FormGroup
 
   constructor(
-
+    
+    private service: MeetingService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<MeetingFormComponent>,
     //@Optional @Inject(MAT_DIALOG_DATA) public data: string
@@ -34,6 +36,34 @@ export class MeetingFormComponent implements OnInit {
   }
 
   save() {
+    if(this.meetingForm.value.id = null){
+      this.create();
+    } else {
+      this.update();
+    }
+  }
 
+  create(){
+    this.service.insert(this.meetingForm.value).subscribe( result => {
+      console.log('Meeting Insert', result);
+    },
+    err => {
+      console.log('Err ', err);
+    });
+    this.dialogRef.close(true);
+    this.meetingForm.reset();
+    //window.location.reload();
+  }
+
+  update(){
+    this.service.insert(this.meetingForm.value).subscribe( result => {
+      console.log('Meeting Insert', result);
+    },
+    err => {
+      console.log('Err ', err);
+    });
+    this.dialogRef.close(true);
+    this.meetingForm.reset();
+    //window.location.reload();
   }
 }
