@@ -35,6 +35,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 //Importando Lib para o serviço
 import { MeetingService } from './service/meeting.service';
+import { LocalDateTimePipe } from './pipe/local-date-time.pipe';
+import { DeleteComponent } from './components/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { MeetingService } from './service/meeting.service';
     HomeComponent,
     MeetingsListComponent,
     MeetingFormComponent,
+    LocalDateTimePipe,
+    DeleteComponent,
   ],
   //Setando os Imports
   imports: [

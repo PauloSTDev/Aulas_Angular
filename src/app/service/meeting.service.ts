@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, Injectable, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 @NgModule({})
 export class MeetingService {
@@ -33,25 +33,25 @@ export class MeetingService {
     getById(id: string){
       return this.http.get(this.MOBILE_BAAS_URL+'/'+id+'?table='+this.tableName, this.httpOptions)
     }
-    getAll(pageNumber: number, totalRecordsPerPage: number, sortField:string, filters:string){
+    getAll(pageNumber:number, totalRecordsPerPage: number, sortField:string, filters:string){
       let parameters = '?table='+this.tableName;
       
       if (pageNumber != null) {
-        parameters += '&pageNumber'+pageNumber;
+        parameters += '&pageNumber='+pageNumber;
       }
 
       if (totalRecordsPerPage != null) {
-        parameters += '&totalRecordsPerPage'+totalRecordsPerPage;
+        parameters += '&totalRecordsPerPage='+totalRecordsPerPage;
       }
 
       if (sortField != null) {
-        parameters += '&sortField'+sortField;
+        parameters += '&sortField='+sortField;
       }
 
       if (filters != null) {
-        parameters += '&filters'+filters;
+        parameters += '&filters='+filters;
       }
-      
+
       return this.http.get(this.MOBILE_BAAS_URL+'/find'+parameters, this.httpOptions);
       
     }
